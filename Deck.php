@@ -8,23 +8,6 @@ class Deck {
 		"Dimonds"
 		);
 
-	// const FACES = array (
-	// 	"Two",
-	// 	"Three",
-	// 	"Four",
-	// 	"Five",
-	// 	"Six",
-	// 	"Seven",
-	// 	"Eight",
-	// 	"Nine",
-	// 	"Ten",
-	// 	"Jack",
-	// 	"Queen",
-	// 	"King",
-	// 	"Ace"
-	// 	);
-
-
 	public $isShuffled;
 
 	public $deck;
@@ -39,10 +22,6 @@ class Deck {
 			foreach(Deck::$suits as $suit)
 			array_push($this->deck, array("face" => $i, "suit" => $suit));
 		}
-
-		// echo("deck: ");
-		// var_dump($this->deck);
-		// echo PHP_EOL;
 	}
 
 	//shuffle the deck array

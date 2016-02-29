@@ -41,15 +41,22 @@ foreach($players as $player) {
 $playerCount = 1;
 
 //break ties and determine winner
-
+$scores = array();
 foreach($players as $player) {
 	echo "Player " . $playerCount . " results: \n";
 	echo $player->hand->bestHandType . "\n";
 	$player->hand->printHand();
 
-	$scores = array()
-	
+	$scores[$playerCount] = $player->hand->points;
+	//array_push($scores, $player->hand->points);
+
 	$playerCount++;
 }
+
+asort($scores);
+
+$winner = $scores[count($scores)];
+echo "Player " . ($winner + 1) . " wins!\n";
+
 
 ?>
