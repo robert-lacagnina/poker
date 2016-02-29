@@ -82,7 +82,7 @@ class Hand {
 
 		$newPoints = 0;
 
-		//count inital card
+		//count initial card
 		$cardCount = array($currentCard['face'] => 1);
 
 		for($i = 1; $i < count($myCards); $i++) {
@@ -95,7 +95,7 @@ class Hand {
 				$this->isFlush = false;
 			}
 
-			//count the number of occurences of a certain card face 
+			//count the number of occurrences of a certain card face
 			if(!array_key_exists($myCards[$i]['face'], $cardCount)) {
 				$cardCount[$myCards[$i]['face']] = 1;
 			}

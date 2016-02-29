@@ -10,13 +10,13 @@ $players = array();
 
 echo("Creating players...\n");
 for($i = 0; $i < $numberOfPlayers; $i++) {
-	array_push($players, new Player(new Hand()));
+	array_push($players, new Player(new Hand(), $i + 1));
 }
 
 echo("Creating deck...\n");
 $deck = new Deck();
 
-echo("Shuffling deck...\n");
+echo("Shuffling deck...\n\n");
 $deck->shuffle();
 
 //deal the cards to each player
@@ -41,11 +41,12 @@ foreach($players as $player) {
 $playerCount = 1;
 
 //break ties and determine winner
-$scores = array();
 foreach($players as $player) {
 	echo "Player " . $playerCount . " results: \n";
 	echo $player->hand->bestHandType . "\n";
+	echo "Points: " . $player->hand->points . "\n";
 	$player->hand->printHand();
+
 
 	$scores[$playerCount] = $player->hand->points;
 	//array_push($scores, $player->hand->points);
@@ -53,10 +54,27 @@ foreach($players as $player) {
 	$playerCount++;
 }
 
-asort($scores);
+//sort the players by points and high card
+usort($players, function($a, $b) {
 
-$winner = $scores[count($scores)];
-echo "Player " . ($winner + 1) . " wins!\n";
+	if ($a->hand->points == $b->hand->points) {
+		return 0;
+	}
+
+	return ($a->hand->points < $b->hand->points) ? -1 : 1;
+});
+
+//break tie
+//for($i = 0; $i < count($players) - 1; $i++){} {
+//	for($j = $i + 1; $j < count($players); $j++){
+//
+//	}
+//}
+
+
+$winner = $players[count($players) - 1];
+//$winner = $scores[count($scores)];
+echo "Player " . $winner->playerNumber . " wins!\n";
 
 
 ?>
