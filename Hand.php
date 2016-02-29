@@ -67,10 +67,18 @@ class Hand {
 					$this->determineHandType($picked);
 
 					$picked = $this->cards;
+
+					var_dump($picked);
+
+					die;
 				}
 			}
 		}
 
+
+		$this->printHand();
+
+		die;
 		// var_dump($this->cards);
 		// var_dump($this->bestHandType);	
 	}
@@ -172,7 +180,7 @@ class Hand {
 			$this->bestHandType = Hand::$handTypes[$newPoints];
 			$this->points = $newPoints;
 			$this->highCardForHand = $highCard;
-			$this->cards = $myCards;
+			$this->bestHandCards = $myCards;
 		}
 
 		// var_dump($this->bestHandType);
@@ -183,7 +191,7 @@ class Hand {
 	}
 
 	public function printHand() {
-		$this->printCards($this->cards);
+		$this->printCards($this->bestHandCards);
 	}
 
 	private function printCards($cards) {

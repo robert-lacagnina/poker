@@ -9,7 +9,7 @@ $numberOfPlayers = $argv[1];
 $players = array();
 
 echo("Creating players...\n");
-for($i = 0; $i <= (int)$numberOfPlayers; $i++) {
+for($i = 0; $i < $numberOfPlayers; $i++) {
 	array_push($players, new Player(new Hand()));
 }
 
@@ -40,15 +40,15 @@ for($i = 0; $i < 5; $i++) {
 
 $playerCount = 1;
 
-foreach($players as $player) {
-	$player->hand->determineBestHand($community);
+$players[0]->hand->determineBestHand($community);
+//$players[0]->hand->printHand();
 
-	echo "Player " . $playerCount . " hand: \n";
+// foreach($players as $player) {
+// 	$player->hand->determineBestHand($community);
+// 	$player->hand->printHand();
 
-	$player->hand->printHand();
-
-	$playerCount++;
-}
+// 	die;
+// }
 
 
 ?>
