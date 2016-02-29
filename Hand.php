@@ -67,33 +67,16 @@ class Hand {
 					$this->determineHandType($picked);
 
 					$picked = $this->cards;
-
-					var_dump($picked);
-
-					die;
 				}
 			}
 		}
-
-
-		$this->printHand();
-
-		die;
-		// var_dump($this->cards);
-		// var_dump($this->bestHandType);	
 	}
 
 	//figure out what kind of hand it is and set $bestHandType if it is better that current hand
 	private function determineHandType($myCards) {
 		$highCard = $this->determineHighCard($myCards);
 
-		 // var_dump($myCards);
-		 // echo "High card: \n";
-		 // var_dump($highCard);
-
 		$baseSuit = $myCards[0]["suit"];
-
-		//var_dump($baseSuit);
 
 		$currentCard = $myCards[0];
 
@@ -130,9 +113,6 @@ class Hand {
 		}
 
 		//check for pairs, trips, quads, two pair, full house
-
-		//$numPairs = array_count_values($cardCount)[2];
-
 		//full house
 		if(in_array(3, $cardCount) && in_array(2, $cardCount)) {
 			$newPoints = 6;
@@ -182,12 +162,6 @@ class Hand {
 			$this->highCardForHand = $highCard;
 			$this->bestHandCards = $myCards;
 		}
-
-		// var_dump($this->bestHandType);
-		// echo "high card: \n";
-		// $this->printCards(array(($this->highCardForHand)));
-		// echo "\n";
-		// $this->printHand();
 	}
 
 	public function printHand() {

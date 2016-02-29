@@ -19,9 +19,6 @@ $deck = new Deck();
 echo("Shuffling deck...\n");
 $deck->shuffle();
 
-//echo "shuffled deck: \n";
-// var_dump($deck);
-
 //deal the cards to each player
 for($i = 0; $i < count($players); $i++) {
 	for($j = 0; $j < 2; $j++) {
@@ -37,18 +34,22 @@ for($i = 0; $i < 5; $i++) {
 }
 
 //determine best hand for each player
+foreach($players as $player) {
+	$player->hand->determineBestHand($community);
+}
 
 $playerCount = 1;
 
-$players[0]->hand->determineBestHand($community);
-//$players[0]->hand->printHand();
+//break ties and determine winner
 
-// foreach($players as $player) {
-// 	$player->hand->determineBestHand($community);
-// 	$player->hand->printHand();
+foreach($players as $player) {
+	echo "Player " . $playerCount . " results: \n";
+	echo $player->hand->bestHandType . "\n";
+	$player->hand->printHand();
 
-// 	die;
-// }
-
+	$scores = array()
+	
+	$playerCount++;
+}
 
 ?>
