@@ -64,14 +64,6 @@ usort($players, function($a, $b) {
 	return ($a->hand->points < $b->hand->points) ? -1 : 1;
 });
 
-//break tie
-//for($i = 0; $i < count($players) - 1; $i++){} {
-//	for($j = $i + 1; $j < count($players); $j++){
-//
-//	}
-//}
-
-
 $winner = $players[count($players) - 1];
 //$winner = $scores[count($scores)];
 echo "Player " . $winner->playerNumber . " wins!\n";
